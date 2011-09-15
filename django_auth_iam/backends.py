@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
 from django.utils.importlib import import_module
+from django.core.exceptions import ImproperlyConfigured
 
 import logging
 logger = logging.getLogger('django_auth_iam')
@@ -29,7 +30,7 @@ class AmazonIAMBackend(ModelBackend):
             mod = import_module(module)
         except ImportError, e:
             raise ImproperlyConfigured('Error importing user class module '
-                                       '{0}: "{1}"'.format(path, e))
+                                       '{0}: "{1}"'.format(module, e))
         except ValueError, e:
             raise ImproperlyConfigured('Error importing user class module. '
                                        'Is IAM_USER_CLASS a string?')
