@@ -5,3 +5,4 @@ IAM authentication backend for Django
 Amazon IAM and SimpleDB services. The project is licensed under the
 **GPL v3**.
 
+Documentation can be found at http://django-auth-iam.readthedocs.org
