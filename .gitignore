@@ -1,4 +1,3 @@
-/docs/_build
 /build
-/*.egg-info
 /dist
+/*.egg-info
