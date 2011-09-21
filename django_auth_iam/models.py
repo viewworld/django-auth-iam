@@ -14,7 +14,7 @@ import bcrypt
 import boto
 from boto.exception import BotoServerError
 from boto.sdb.db.model import Model
-from boto.sdb.db.property import *
+from boto.sdb.db.property import Property, StringProperty, PasswordProperty
 from boto.utils import Password
 
 from .utils import encrypt_key, decrypt_key
