@@ -1,3 +1,15 @@
+
+"""
+django_auth_iam.models
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This module provides user and group models.
+
+:copyright: (c) 2011  ViewWorld ApS
+:license: GPLv3, see LICENSE for details.
+
+"""
+
 import bcrypt
 import boto
 from boto.exception import BotoServerError

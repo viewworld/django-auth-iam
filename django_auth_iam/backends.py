@@ -1,4 +1,16 @@
 
+"""
+django_auth_iam.backends
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This module provides a backend for use with Django's authentication
+framework.
+
+:copyright: (c) 2011  ViewWorld Aps
+:license: GPLv3, see LICENSE for details.
+
+"""
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
