@@ -1,0 +1,4 @@
+-e git+git://github.com/boto/boto.git#egg=boto
+django
+PyCrypto
+py_bcrypt

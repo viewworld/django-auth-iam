@@ -14,20 +14,26 @@
 import sys, os
 
 sys.path.insert(0, os.path.abspath('..'))
-os.environ
 
-from django.conf import settings
+class Mock(object):
+    def __init__(self, *args):
+        pass
 
-if not settings.configured:
-    settings.configure(
-        DATABASE_ENGINE='sqlite3',
-        INSTALLED_APPS=[
-            'django_auth_iam',
-        ],
-        AUTHENTICATION_BACKENDS = (
-            'django_auth_iam.backends.AmazonIAMBackend',
-        )
-    )
+    def __getattr__(self, name):
+        return Mock()
+
+    def __call__(self, *args, **kwargs):
+        return None
+
+MOCK_MODULES = [
+    'bcrypt',
+    'Crypto',
+    'Crypto.Cipher',
+    'django',
+]
+
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = Mock()
 
 import django_auth_iam
 
