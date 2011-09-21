@@ -6,7 +6,7 @@ from boto.sdb.db.model import Model
 from django.test import TestCase
 
 from . import utils
-from .models import BCryptPassword, BCryptPasswordProperty
+from .properties import BCryptPassword, BCryptPasswordProperty
 
 class TestEncryption(TestCase):
     def test_reversable(self):
