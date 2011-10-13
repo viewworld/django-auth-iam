@@ -39,6 +39,12 @@ class User(Model):
     >>> print user.password
     $2a$12$REbzH3KM5YdyAO6d8lGHSu2zeQZ2i4CzXpV4Y2HbIO7BYSCt9Plo.
 
+    .. note::
+
+        Setting a new password does not re-encrypt the secret key. Use
+        :meth:`User.change_password` for changing the password and
+        re-encrypting the secret key in one step.
+
     """
     access_key = StringProperty()
     """Access key to Amazon services."""
@@ -133,6 +139,19 @@ class User(Model):
         except BotoServerError as e:
             if e.status != 404:
                 raise e
+
+    def change_password(cur_password, new_password):
+        """Helper method for changing the password and re-encrypting the
+        secret key.
+
+        :param cur_password: the user's current password.
+        :param new_password: the user's new password.
+
+        """
+        self.password = new_password
+        secret_key = self.get_secret_key(cur_password)
+        self.enc_secret_key = encrypt_key(secret_key, new_password)
+
 
 class Group(Model):
 

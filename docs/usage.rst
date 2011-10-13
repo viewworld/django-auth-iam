@@ -18,13 +18,14 @@ users. You can start a python shell with ``python manage.py shell``::
     >>> user = User.get_by_username('user1')
     >>> user.delete()
 
-Passwords are hashed before they are stored. To change
-and compare passwords you can use standard operators::
+Passwords are automatically hashed before they are stored. To change a users
+password you can use the method
+:meth:`~django_auth_iam.models.User.change_password`::
 
     >>> user = User.create('testuser', 'pass')
     >>> user.password == 'pass'
     True
-    >>> user.password = 'spam'
+    >>> user.change_password('pass', 'spam')
     >>> print user.password
     $2a$12$hmYnBI/VdPjxZep1lbIcLObBlN.LYYXRanL/1AMYlaJeIn30aBOjO
     >>> user.password == 'spam'
