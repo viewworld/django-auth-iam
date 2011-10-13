@@ -3,6 +3,7 @@ IAM/SimpleDB authentication backend for Django
 ==============================================
 
 .. toctree::
+   :maxdepth: 1
 
    setup
    usage
