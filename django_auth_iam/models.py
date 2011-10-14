@@ -140,7 +140,7 @@ class User(Model):
             if e.status != 404:
                 raise e
 
-    def change_password(cur_password, new_password):
+    def change_password(self, cur_password, new_password):
         """Helper method for changing the password and re-encrypting the
         secret key.
 
